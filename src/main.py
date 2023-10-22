@@ -17,6 +17,7 @@ class Table:
         
         self.h_sep = kwargs.get('h_sep', '|')
         self.v_sep = kwargs.get('v_sep', '—')
+        self.c_sep = kwargs.get('c_sep', '+')
         self.margin = kwargs.get('margin', 1)
 
 
@@ -48,7 +49,7 @@ class Table:
 
             to_print += row_str + "\n"
             if col_nr != len(self.table) - 1:
-                to_print += self.v_sep * ((len(self.table[0])) * (self.margin * 2 + longest_value + 1) - 1) + "\n"
+                to_print += (len(self.table[0]) * (self.v_sep * (longest_value + self.margin * 2) + self.c_sep)) [:-1] + "\n"
 
             col_nr += 1
         
